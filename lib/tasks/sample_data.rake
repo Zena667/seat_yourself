@@ -39,6 +39,14 @@ namespace :db do
         cuisine_id: 2,
         image: "http://enroute.aircanada.com/files/medias/CBNRintropicture.jpg")
     end
+    Restaurant.all.each do |x|
+      31.times do |d|
+        Day.create!(day: d+1,
+        month: 7,
+        year: 2013,
+        restaurant_id: x.id)
+      end
+    end
   end
 end
 

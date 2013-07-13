@@ -5,7 +5,9 @@ namespace :db do
       email: "zena@gmail.com",
       password: "123",
       password_confirmation: "123")
-    50.times do |n|
+    Cuisine.create!(name: "Pub Food")
+    Cuisine.create!(name: "French")
+    10.times do |n|
       name = Faker::Company.name
       address = Faker::Address.street_address
       neighbourhood = Faker::Address.city
@@ -18,6 +20,23 @@ namespace :db do
         price_range: price_range,
         description: description,
         menu: menu,
+        cuisine_id: 1,
+        image: "http://enroute.aircanada.com/files/medias/CBNRintropicture.jpg")
+    end
+    10.times do |n|
+      name = Faker::Company.name
+      address = Faker::Address.street_address
+      neighbourhood = Faker::Address.city
+      price_range = "#{n+1}"
+      description = Faker::Company.catch_phrase
+      menu = Faker::Company.bs
+      Restaurant.create!(name: name,
+        address: address,
+        neighbourhood: neighbourhood,
+        price_range: price_range,
+        description: description,
+        menu: menu,
+        cuisine_id: 2,
         image: "http://enroute.aircanada.com/files/medias/CBNRintropicture.jpg")
     end
   end

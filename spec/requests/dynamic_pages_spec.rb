@@ -7,12 +7,8 @@ describe "DynamicPages" do
       page.should have_content("Dinefy")
     end
 
-    # it "should have link to Sign Up" do
-    #   before do 
-    #       visit root
-    #       click_on("Sign Up")
-
-    #   end
-    # end
+    it "should have link to Sign Up" do
+      page.has_link? ('Sign Up')
+    end
   end  
 end

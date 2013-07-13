@@ -1,1 +1,12 @@
 <h1>Dinefy</h1>
+<% @restaurants.each do |restaurant| %>
+    <a href = "<%= restaurant_path(restaurant) %>"><div class="record" link href="#" /> 
+      <div class="record-pic">
+        <p><%= image_tag(restaurant.image, class: "rest-thumb") %></p>
+      </div>
+      <div class="record-info">
+        <p><%= restaurant.name %></p>
+        <p><%= restaurant.address %></p>
+      </div>
+    </div></a>
+<% end %>

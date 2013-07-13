@@ -1,0 +1,22 @@
+.rest-thumb {
+  height: 90px;
+}
+
+.record-info {
+  padding-left: 10px;
+  vertical-align: bottom;
+  display: inline-block;
+}
+
+.record-pic {
+  padding-left: 10px;
+  display: inline-block;
+}
+
+.record {
+  width: 700px;
+  display: inline-block;
+  margin: 5px auto;
+  border: 1px solid grey;
+}
+

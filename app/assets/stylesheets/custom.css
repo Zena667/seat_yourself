@@ -20,3 +20,19 @@
   border: 1px solid grey;
 }
 
+.rest-image {
+  height: 300px;
+  width: 300px;
+}
+
+.show-box {
+  display: inline-block;
+}
+
+.rest-show-img {
+  padding-left: 20px;
+}
+
+.rest-show-info {
+  padding-left: 40px;
+}

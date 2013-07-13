@@ -23,5 +23,18 @@ describe "DynamicPages" do
         page.has_css? ('div.record')
       end
     end
-  end  
+  end 
+
+  describe "Show Restaurant Page" do
+    let(:restaurant) {FactoryGirl.create(:restaurant)}
+    before do
+      visit restaurant_path(restaurant)
+    end
+
+    it "should have content Food" do
+      page.should have_content('Food')
+    end
+  end
+
+
 end

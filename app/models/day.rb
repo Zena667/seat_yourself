@@ -5,4 +5,5 @@ class Day < ActiveRecord::Base
   validates :restaurant_id, presence: true
   has_many :hours
   validates :day, :month, :year, presence: true
+  has_many :reservations
 end

@@ -29,6 +29,9 @@ describe "DynamicPages" do
   describe "Show Restaurant Page" do
     let(:cuisine) {FactoryGirl.create(:cuisine)}
     let(:restaurant) {FactoryGirl.create(:restaurant, cuisine: cuisine)}
+    let(:user) {FactoryGirl.create(:user)}
+    let(:day) {FactoryGirl.create(:day, restaurant: restaurant)}
+    let(:hour) {FactoryGirl.create(:hour, day: day)}
     before do
       visit restaurant_path(restaurant)
     end
@@ -36,6 +39,12 @@ describe "DynamicPages" do
     it "should have content Food" do
       page.should have_content('Food ')
     end
+
+    it "should complete a reservation" do
+      restaurant.reservations.count.should == 0
+    end
+
+
   end
 
 

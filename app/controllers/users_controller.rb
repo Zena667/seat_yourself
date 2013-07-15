@@ -6,9 +6,30 @@ class UsersController < ApplicationController
   def create
      @user = User.new(params[:user])
       if @user.save
-        redirect_to root_path, :notice => "Signed up!"
+        sign_in @user
+          redirect_to root_path, :notice => "Signed up!"
       else
-        render "new"
+          render "new"
       end
   end
+
+  def show
+    @user = User.find_by_id(params[:id])
+  end
+
+  def edit
+    @user = User.find_by_id(params[:id])
+  end
+
+  def update
+    @user = User.find_by_id(params[:id])
+
+    if @user.update_attributes(params[:user])
+      sign_in @user
+      redirect_to user_path(@user), notice: "Updated Successfully"
+    else
+      render 'edit'
+    end
+  end
+  
 end

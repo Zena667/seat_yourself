@@ -14,4 +14,26 @@ FactoryGirl.define do
     password "123"
     password_confirmation "123"
   end
+
+  factory :day do
+    day 1
+    month 1
+    year 2013
+    restaurant_id
+  end
+
+  factory :hour do
+    open_seats 100
+    number 11
+    day_id
+  end  
+
+  factory :reservation do
+    party_size 2
+    restaurant_id
+    day_id
+    hour_id
+    user_id
+  end
+
 end

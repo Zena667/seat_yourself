@@ -17,7 +17,8 @@ describe "DynamicPages" do
       it "should not have a record class yet" do
         page.should_not have_css('div.record')
       end
-      let(:restaurant) {FactoryGirl.create(:restaurant)}
+      let(:cuisine) {FactoryGirl.create(:cuisine)}
+      let(:restaurant) {FactoryGirl.create(:restaurant, cuisine: cuisine)}
 
       it "should have a record class now" do
         page.has_css? ('div.record')
@@ -26,13 +27,14 @@ describe "DynamicPages" do
   end 
 
   describe "Show Restaurant Page" do
-    let(:restaurant) {FactoryGirl.create(:restaurant)}
+    let(:cuisine) {FactoryGirl.create(:cuisine)}
+    let(:restaurant) {FactoryGirl.create(:restaurant, cuisine: cuisine)}
     before do
       visit restaurant_path(restaurant)
     end
 
     it "should have content Food" do
-      page.should have_content('Food')
+      page.should have_content('Food ')
     end
   end
 

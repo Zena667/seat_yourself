@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130713214022) do
+ActiveRecord::Schema.define(:version => 20130715171916) do
 
   create_table "cuisines", :force => true do |t|
     t.string   "name"
@@ -24,6 +24,24 @@ ActiveRecord::Schema.define(:version => 20130713214022) do
     t.integer  "day"
     t.integer  "month"
     t.integer  "year"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  create_table "hours", :force => true do |t|
+    t.integer  "open_seats"
+    t.integer  "time_slot"
+    t.integer  "day_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "reservations", :force => true do |t|
+    t.integer  "party_size"
+    t.integer  "restaurant_id"
+    t.integer  "day_id"
+    t.integer  "hour_id"
+    t.integer  "user_id"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
   end

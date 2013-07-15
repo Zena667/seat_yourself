@@ -1,4 +1,8 @@
 FactoryGirl.define do
+  factory :cuisine do
+    name "Pub Food"
+  end
+
   factory :restaurant do
     name "Food"
     address "123 Road"
@@ -7,6 +11,7 @@ FactoryGirl.define do
     image "http://enroute.aircanada.com/files/medias/CBNRintropicture.jpg"
     neighbourhood "City"
     price_range "$$$$"
+    cuisine
   end
   factory :user do
     name     "Zena Bielewicz"
@@ -19,21 +24,21 @@ FactoryGirl.define do
     day 1
     month 1
     year 2013
-    restaurant_id
+    restaurant
   end
 
   factory :hour do
     open_seats 100
-    number 11
-    day_id
+    time_slot 11
+    day
   end  
 
   factory :reservation do
     party_size 2
-    restaurant_id
-    day_id
-    hour_id
-    user_id
+    restaurant
+    day
+    hour
+    user
   end
 
 end

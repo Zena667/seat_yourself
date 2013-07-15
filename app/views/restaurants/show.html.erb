@@ -12,3 +12,11 @@
   <p><%= @restaurant.menu %></p>
   <p><%= @restaurant.description %></p>
 </div>
+<div>
+  <%= @day.day %>, <%= @day.month %>, <%= @day.year %>
+</div>
+<div>
+  <% @day.hours.each do |hour| %>
+    <p><%= hour.time_slot %> | <%= hour.open_seats %></p>
+  <% end %>  
+</div>

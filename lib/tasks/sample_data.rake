@@ -7,7 +7,7 @@ namespace :db do
       password_confirmation: "123")
     Cuisine.create!(name: "Pub Food")
     Cuisine.create!(name: "French")
-    10.times do |n|
+    5.times do |n|
       name = Faker::Company.name
       address = Faker::Address.street_address
       neighbourhood = Faker::Address.city
@@ -23,7 +23,7 @@ namespace :db do
         cuisine_id: 1,
         image: "http://enroute.aircanada.com/files/medias/CBNRintropicture.jpg")
     end
-    10.times do |n|
+    5.times do |n|
       name = Faker::Company.name
       address = Faker::Address.street_address
       neighbourhood = Faker::Address.city
@@ -39,12 +39,26 @@ namespace :db do
         cuisine_id: 2,
         image: "http://enroute.aircanada.com/files/medias/CBNRintropicture.jpg")
     end
+
+    #Create 31 days
     Restaurant.all.each do |x|
       31.times do |d|
         Day.create!(day: d+1,
         month: 7,
         year: 2013,
         restaurant_id: x.id)
+      end
+    end
+
+    #Create 9 hours
+    Day.all.each do |d|
+      x = 10
+      9.times do 
+        Hour.create!( 
+          time_slot: x+=1,
+          day_id: d.id,
+          open_seats: 100
+          )
       end
     end
   end

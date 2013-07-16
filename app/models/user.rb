@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   validates :name, :email, presence: true
   validates_presence_of :password, :on => :create
   has_many :reservations
+  has_many :points
   before_save :create_remember_token
 
   private

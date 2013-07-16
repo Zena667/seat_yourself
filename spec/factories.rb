@@ -21,9 +21,9 @@ FactoryGirl.define do
   end
 
   factory :day do
-    day 1
-    month 1
-    year 2013
+    day Time.now.strftime("%d").to_i
+    month Time.now.strftime("%m").to_i
+    year Time.now.strftime("%Y").to_i
     restaurant
   end
 

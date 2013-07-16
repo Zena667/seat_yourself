@@ -23,7 +23,7 @@ module SessionsHelper
   end
 
   def store_location
-    session[:return_to] = request.url
+    session[:return_to] = request.referer
   end
 
   def current_user=(user)

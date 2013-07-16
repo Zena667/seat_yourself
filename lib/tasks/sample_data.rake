@@ -61,6 +61,12 @@ namespace :db do
           )
       end
     end
+
+    Point.create!(
+      earned: 1000,
+      spent: 100,
+      restaurant_id: 1,
+      user_id: 1)
   end
 end
 

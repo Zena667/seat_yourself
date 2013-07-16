@@ -6,7 +6,7 @@ class RestaurantsController < ApplicationController
 
   def show
     @restaurant = Restaurant.find(params[:id])
-    @day = @restaurant.days.find_by_day_and_month_and_year(Time.now.strftime("%d").to_i, Time.now.strftime("%m").to_i, Time.now.strftime("%Y").to_i)
+    @day = Day.find_by_restaurant_id_and_day_and_month_and_year(@restaurant.id, Time.now.strftime("%d").to_i, Time.now.strftime("%m").to_i, Time.now.strftime("%Y").to_i)
   end
 
 end

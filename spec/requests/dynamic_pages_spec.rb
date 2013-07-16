@@ -36,13 +36,13 @@ describe "DynamicPages" do
       visit restaurant_path(restaurant)
     end
 
-    it "should have content Food" do
-      page.should have_content('Food ')
+    it "should have content Food " do
+      page.should have_content('Food')
     end
 
-    it "should complete a reservation" do
-      restaurant.reservations.count.should == 0
-    end
+    # it "should complete a reservation exit" do
+    #   restaurant.reservations.count.should == 0
+    # end
 
 
   end

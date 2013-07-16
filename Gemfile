@@ -16,6 +16,10 @@ group :development, :test do
   gem 'spork', '0.9.2'
 end
 
+group :development do
+  gem 'letter_opener'
+end  
+
 group :test do
   gem 'capybara', '1.1.2'
   gem 'factory_girl_rails', '4.1.0'

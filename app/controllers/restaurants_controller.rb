@@ -3,6 +3,11 @@ before_filter :check_owner, only: [:owner]
 
   def index
     @restaurants = Restaurant.all
+    @cuisine = Cuisine.all
+    respond_to do |format|
+      format.html
+      format.json { render json: @restaurants.as_json( :include => :cuisine ) }
+    end
   end
 
   def show
@@ -11,12 +16,12 @@ before_filter :check_owner, only: [:owner]
   end
 
   def owner 
-    @current_day = Day.find_by_day_and_month_and_year(Time.now.strftime("%d").to_i, Time.now.strftime("%m").to_i, Time.now.strftime("%Y").to_i)
     @day = Time.now.strftime("%d").to_i
     @month = Time.now.strftime("%m").to_i
     @year = Time.now.strftime("%Y").to_i
     @restaurant = Restaurant.find_by_id(current_user.owned_restaurant_id)
-    @days_reservations = @restaurant.reservations.find_all_by_day_id(@current_day.id)
+    
+
   end
 
 private

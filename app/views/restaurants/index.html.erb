@@ -1,13 +1,25 @@
 <h1>Dinefy</h1>
-<% @restaurants.each do |restaurant| %>
-    <a href = "<%= restaurant_path(restaurant) %>"><div class="record" link href="#" /> 
-      <div class="record-pic">
-        <p><%= image_tag(restaurant.image, class: "rest-thumb") %></p>
+<div ng-controller='RestaurantListCtrl'>
+  Filter By: <select ng-model="filterProp">
+            <option value="">All</option>
+            <% @cuisine.each do |cine| %>
+            <option value="<%= cine.name %>"><%= cine.name %></option>
+            <% end %>
+           </select>
+  <div ng-repeat="restaurant in restaurants | filter:filterProp" >
+    <%= link_to "/restaurants/{{restaurant.id}}" do %>
+      <div class="record">
+        <div class="record-pic">
+          <p><img class="rest-thumb" ng-src="{{restaurant.image}}"></p>
+        </div>
+        <div class="record-info">
+          <p>{{restaurant.name}}</p>
+          <p>{{restaurant.address}}</p>
+          <p>{{restaurant.cuisine.name}}</p>
+        </div>
       </div>
-      <div class="record-info">
-        <p><%= restaurant.name %></p>
-        <p><%= restaurant.address %></p>
-        <p><%= restaurant.cuisine.name %></p>
-      </div>
-    </div></a>
-<% end %>
+    <% end %>
+  </div>
+</div>
+
+

@@ -5,8 +5,18 @@ namespace :db do
       email: "zena@gmail.com",
       password: "123",
       password_confirmation: "123")
+
+
+    owner = User.create!(name: "Eric",
+      email: "eric@gmail.com",
+      password: "123",
+      password_confirmation: "123",
+      owned_restaurant_id: 1)
+    owner.toggle!(:owner)
+
     Cuisine.create!(name: "Pub Food")
     Cuisine.create!(name: "French")
+
     5.times do |n|
       name = Faker::Company.name
       address = Faker::Address.street_address

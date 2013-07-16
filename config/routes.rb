@@ -4,6 +4,8 @@ Dinefy::Application.routes.draw do
   resources :users
   resources :reservations, only: [:create, :destroy]
   resources :sessions, only: [:new, :create, :destroy]
+  
+  get '/owner', to: 'restaurants#owner'
   root to: 'restaurants#index'
 
   # The priority is based upon order of creation:

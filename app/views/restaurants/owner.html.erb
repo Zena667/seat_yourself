@@ -1,0 +1,20 @@
+<h1>Restaurant Profile</h1>
+
+<% 7.times do %>
+  
+  <% current_day = Day.find_by_day_and_month_and_year(@day, @month, @year) %>
+  <p>
+  <%= current_day.day %> / <%= current_day.month %> / <%= current_day.year %>
+  </p>
+  <% days_reservations = @restaurant.reservations.find_all_by_day_id(current_day.id) %>
+  <% days_reservations.sort! { |a,b| a.hour.time_slot <=> b.hour.time_slot } %>
+  <% days_reservations.each do |reserve| %>
+    <p>
+      <%= reserve.hour.time_slot %>:00 | Name: <%= reserve.user.name %> | Party of <%= reserve.party_size %> | Total Earned: <%= reserve.user.points.find_by_restaurant_id(@restaurant.id).earned %> | Spent: <%= reserve.user.points.find_by_restaurant_id(@restaurant.id).spent %>
+    </p>
+  <% end %>
+  <% @day += 1 %>
+<% end %>
+
+
+<!-- # show schedule with customers and points -->

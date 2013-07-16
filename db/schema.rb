@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130716170220) do
+ActiveRecord::Schema.define(:version => 20130716185546) do
 
   create_table "cuisines", :force => true do |t|
     t.string   "name"
@@ -72,9 +72,11 @@ ActiveRecord::Schema.define(:version => 20130716170220) do
     t.string   "email"
     t.string   "name"
     t.string   "password_digest"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
     t.string   "remember_token"
+    t.boolean  "owner",               :default => false
+    t.integer  "owned_restaurant_id", :default => 0
   end
 
 end

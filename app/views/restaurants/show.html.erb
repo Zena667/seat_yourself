@@ -21,10 +21,18 @@
     <%= hidden_field_tag 'day_id', @day.id %>
     <%= hidden_field_tag 'hour_id', '' %>
 
+
     <p>Party Size <%= select_tag 'party_size', options_for_select((1..20), 2 ) %></p>
+    <% num = 0 %>
     <% @day.hours.each do |hour| %>
       <p>
-      <button class="<%= hour.id.in_words.strip.gsub(' ', '-') %>" ><%= hour.time_slot %>:00</button> | <% seats_left = hour.open_seats - (hour.reservations.pluck(:party_size).sum) %><%= seats_left %>
+        <% seats_left = hour.open_seats - (hour.reservations.pluck(:party_size).sum) %>
+        <% if seats_left <= 0 %>
+        <button class="<%= hour.id.in_words.strip.gsub(' ', '-') %>", disabled ><%= hour.time_slot %>:00</button>
+        <% else %><button class="<%= hour.id.in_words.strip.gsub(' ', '-') %>" ><%= hour.time_slot %>:00</button>
+        <% end %>
+         | <%= seats_left %>
+      <%= hidden_field_tag "#{(num +=1).in_words}", seats_left %>
       </p>
     <% end %>
 
@@ -39,7 +47,7 @@ $(document).ready(function() {
       $("form").submit();
     });
   });
-  
+
 });
 
 
